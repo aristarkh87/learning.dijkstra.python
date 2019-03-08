@@ -48,15 +48,7 @@ def get_current_node(labeled_graph, visited_nodes):
     return current_node
 
 
-def print_result(labeled_graph):
-    print("{}\t{}".format("Node", "Path"))
-    for node, label in labeled_graph.items():
-        print("{}\t{}".format(node, label))
-
-
-if __name__ == "__main__":
-    graph = get_graph(sys.argv[1])
-    initial_node = get_initial_node()
+def dijkstra(graph, initial_node):
     labeled_graph = { key: float("inf") for key in graph.get_nodes() }
     current_node = initial_node
     labeled_graph[current_node] = 0
@@ -70,5 +62,16 @@ if __name__ == "__main__":
                     labeled_graph[neighbour] = new_label
         visited_nodes.append(current_node)
         current_node = get_current_node(labeled_graph, visited_nodes)
+    return labeled_graph
 
-    print_result(labeled_graph)
+
+def print_result(graph_paths):
+    print("{}\t{}".format("Node", "Path"))
+    for node, label in graph_paths.items():
+        print("{}\t{}".format(node, label))
+
+
+if __name__ == "__main__":
+    graph = get_graph(sys.argv[1])
+    initial_node = get_initial_node()
+    print_result(dijkstra(graph, initial_node))
