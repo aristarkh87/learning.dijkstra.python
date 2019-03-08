@@ -1,4 +1,4 @@
-from graph import GRAPH as origin_graph
+from graph_dict import GRAPH as origin_graph
 import sys
 
 try:
