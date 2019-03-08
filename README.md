@@ -4,10 +4,14 @@ Dijkstra's algorithm in Python. Example from https://en.wikipedia.org/wiki/Dijks
 
 ## Usage
 ```bash
-python3 dijkstra.py ${initial_node}
+python3 dijkstra.py dict ${initial_node_name}
+```
+or
+```bash
+python3 dijkstra.py matrix ${initial_node_index}
 ```
 
-## Graph
+## Graph dict
 ```Python
 GRAPH = {
     "node1": {
@@ -24,4 +28,13 @@ GRAPH = {
         "neighbourN": int(weightN)
     }
 }
+```
+
+## Graph matrix
+```Python
+GRAPH = [
+    [0, int(weight0_0), int(weight0_1), ..., int(weight0_N)],
+    ...
+    [int(weightN_0), int(weightN_1), ..., 0]
+]
 ```
