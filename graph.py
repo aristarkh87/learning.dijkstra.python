@@ -1,35 +1,24 @@
-# Example from
-# https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+class Graph():
+    def __init__(self):
+        self.graph = {}
 
-GRAPH = {
-    "1": {
-        "2": 7,
-        "3": 9,
-        "6": 14
-    },
-    "2": {
-        "1": 7,
-        "3": 10,
-        "4": 15
-    },
-    "3": {
-        "1": 9,
-        "2": 10,
-        "4": 11,
-        "6": 2
-    },
-    "4": {
-        "2": 15,
-        "3": 11,
-        "5": 6
-    },
-    "5": {
-        "4": 6,
-        "6": 9
-    },
-    "6": {
-        "1": 14,
-        "3": 2,
-        "5": 9
-    }
-}
+    def add_node(self, node):
+        if node not in self.graph:
+            self.graph[node] = {}
+
+    def set_edge(self, node, neighbour, weight=float("inf")):
+        if not self.graph.get(node):
+            self.add_node(node)
+        self.graph[node].update({neighbour: weight})
+
+    def get_nodes(self):
+        return list(self.graph)
+
+    def get_edges(self, node):
+        return self.graph.get(node)
+
+    def get_weight(self, node, neighbour):
+        if self.graph.get(node):
+            return self.graph.get(node).get(neighbour)
+        else:
+            return None
