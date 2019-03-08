@@ -4,7 +4,7 @@ import sys
 try:
     initial_node = sys.argv[1]
 except IndexError:
-    initial_node = "1"
+    initial_node = list(origin_graph.keys())[0]
 
 
 def get_current_node(labeled_graph, passed_nodes):
