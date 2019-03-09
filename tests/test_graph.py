@@ -5,46 +5,40 @@ from graph import Graph
 class TestGraph(unittest.TestCase):
     def setUp(self):
         self.graph = Graph()
+        self.graph.graph = {"a": {"b": 10, "c": 20}, "d": {"e": 30}}
 
     def test_add_node(self):
-        node = "a"
+        node = "f"
         self.graph.add_node(node)
-        result = {node: {}}
-        self.assertEqual(self.graph.graph, result)
+        self.assertTrue(node in self.graph.graph)
 
     def test_set_edge_without_weight(self):
         node = "a"
         neighbour = "b"
-        inf = float("inf")
+        weight = float("inf")
         self.graph.set_edge(node, neighbour)
-        result = {node: {neighbour: inf}}
-        self.assertEqual(self.graph.graph, result)
+        self.assertEqual(self.graph.graph[node][neighbour], weight)
 
     def test_set_edge_with_weight(self):
         node = "a"
         neighbour = "b"
-        weight = 10
+        weight = 100
         self.graph.set_edge(node, neighbour, weight)
-        result = {node: {neighbour: weight}}
-        self.assertEqual(self.graph.graph, result)
+        self.assertEqual(self.graph.graph[node][neighbour], weight)
 
     def test_get_nodes(self):
-        self.graph.graph = {"a": {"b": 10}, "c": {}}
-        result = ["a", "c"]
+        result = ["a", "b", "c", "d", "e"]
         self.assertEqual(self.graph.get_nodes(), result)
 
     def test_get_edges(self):
-        node = "a"
-        self.graph.graph = {node: {"b": 10, "c": 20}}
         result = {"b": 10, "c": 20}
-        self.assertEqual(self.graph.get_edges(node), result)
+        self.assertEqual(self.graph.get_edges("a"), result)
 
     def test_get_weight(self):
-        node = "a"
-        neighbour = "b"
-        weight = 10
-        self.graph.graph = {node: {neighbour: weight}}
-        self.assertEqual(self.graph.get_weight(node, neighbour), weight)
+        self.assertEqual(self.graph.get_weight("a", "b"), 10)
+
+    def test_get_weight_none(self):
+        self.assertEqual(self.graph.get_weight("x", "y"), None)
 
 
 if __name__ == "__main__":
