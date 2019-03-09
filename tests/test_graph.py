@@ -5,10 +5,24 @@ from graph import Graph
 class TestGraph(unittest.TestCase):
     def setUp(self):
         self.graph = Graph()
-        self.graph.graph = {"a": {"b": 10, "c": 20}, "d": {"e": 30}}
+        self.graph.graph = {
+            "a": {
+                "b": 30,
+                "c": 10
+            },
+            "b": {
+                "d": 40
+            },
+            "c": {
+                "a": 50
+            },
+            "d": {
+                "c": 20
+            }
+        }
 
     def test_add_node(self):
-        node = "f"
+        node = "e"
         self.graph.add_node(node)
         self.assertTrue(node in self.graph.graph)
 
@@ -27,18 +41,18 @@ class TestGraph(unittest.TestCase):
         self.assertEqual(self.graph.graph[node][neighbour], weight)
 
     def test_get_nodes(self):
-        result = ["a", "b", "c", "d", "e"]
+        result = ["a", "b", "c", "d"]
         self.assertEqual(self.graph.get_nodes(), result)
 
     def test_get_edges(self):
-        result = {"b": 10, "c": 20}
+        result = {"b": 30, "c": 10}
         self.assertEqual(self.graph.get_edges("a"), result)
 
     def test_get_weight(self):
-        self.assertEqual(self.graph.get_weight("a", "b"), 10)
+        self.assertEqual(self.graph.get_weight("a", "b"), 30)
 
     def test_get_weight_none(self):
-        self.assertEqual(self.graph.get_weight("x", "y"), None)
+        self.assertIsNone(self.graph.get_weight("x", "y"))
 
 
 if __name__ == "__main__":
