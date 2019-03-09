@@ -1,14 +1,20 @@
 # Dijkstra's algorithm
+[![Build Status](https://travis-ci.org/aristarkh87/learning.dijkstra.python.svg?branch=master)](https://travis-ci.org/aristarkh87/learning.dijkstra.python)
 
 Dijkstra's algorithm in Python. Example from https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm.
 
 ## Usage
 ```bash
-python3 dijkstra.py dict ${initial_node_name}
+python dijkstra.py dict ${initial_node_name}
 ```
 or
 ```bash
-python3 dijkstra.py matrix ${initial_node_index}
+python dijkstra.py matrix ${initial_node_index}
+```
+
+## Run tests
+```bash
+python -m unittest discover -v
 ```
 
 ## Graph dict

@@ -1,4 +1,4 @@
-class Graph():
+class Graph(dict):
     def __init__(self):
         self.graph = {}
 
@@ -12,7 +12,12 @@ class Graph():
         self.graph[node].update({neighbour: weight})
 
     def get_nodes(self):
-        return list(self.graph)
+        all_nodes = set(self.graph)
+        for node, neighbours in self.graph.items():
+            all_nodes.add(node)
+            for neighbour in neighbours:
+                all_nodes.add(neighbour)
+        return sorted(list(all_nodes))
 
     def get_edges(self, node):
         return self.graph.get(node)
