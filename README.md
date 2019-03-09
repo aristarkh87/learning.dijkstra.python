@@ -1,4 +1,5 @@
 # Dijkstra's algorithm
+[![Build Status](https://travis-ci.org/aristarkh87/learning.dijkstra.python.svg?branch=master)](https://travis-ci.org/aristarkh87/learning.dijkstra.python)
 
 Dijkstra's algorithm in Python. Example from https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm.
 
