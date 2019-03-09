@@ -14,7 +14,7 @@ python dijkstra.py matrix ${initial_node_index}
 
 ## Run tests
 ```bash
-python -m unittest -v
+python -m unittest discover -v
 ```
 
 ## Graph dict
