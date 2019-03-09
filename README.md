@@ -4,11 +4,16 @@ Dijkstra's algorithm in Python. Example from https://en.wikipedia.org/wiki/Dijks
 
 ## Usage
 ```bash
-python3 dijkstra.py dict ${initial_node_name}
+python dijkstra.py dict ${initial_node_name}
 ```
 or
 ```bash
-python3 dijkstra.py matrix ${initial_node_index}
+python dijkstra.py matrix ${initial_node_index}
+```
+
+## Run tests
+```bash
+python -m unittest -v
 ```
 
 ## Graph dict
