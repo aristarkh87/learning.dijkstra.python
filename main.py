@@ -56,11 +56,12 @@ def dijkstra(graph, initial_node):
     visited_nodes = list()
 
     while current_node is not None:
-        for neighbour, weight in graph.get_edges(current_node).items():
-            if neighbour not in visited_nodes:
-                new_label = weight + labeled_graph[current_node]
-                if new_label < labeled_graph[neighbour]:
-                    labeled_graph[neighbour] = new_label
+        if graph.get_edges(current_node):
+            for neighbour, weight in graph.get_edges(current_node).items():
+                if neighbour not in visited_nodes:
+                    new_label = weight + labeled_graph[current_node]
+                    if new_label < labeled_graph[neighbour]:
+                        labeled_graph[neighbour] = new_label
         visited_nodes.append(current_node)
         current_node = get_current_node(labeled_graph, visited_nodes)
     return labeled_graph
