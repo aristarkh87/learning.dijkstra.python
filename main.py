@@ -27,14 +27,6 @@ def create_graph_from_matrix(graph_matrix):
     return graph
 
 
-def get_graph(graph_type):
-    if graph_type == "dict":
-        graph = create_graph_from_dict(graph_config.GRAPH_DICT)
-    elif graph_type == "matrix":
-        graph = create_graph_from_matrix(graph_config.GRAPH_MATRIX)
-    return graph
-
-
 def get_current_node(labeled_graph, visited_nodes):
     current_node = None
     current_node_label = float("inf")
@@ -47,7 +39,7 @@ def get_current_node(labeled_graph, visited_nodes):
 
 
 def dijkstra(graph, initial_node):
-    labeled_graph = { key: float("inf") for key in graph.get_nodes() }
+    labeled_graph = {key: float("inf") for key in graph.get_nodes()}
     current_node = initial_node
     labeled_graph[current_node] = 0
     visited_nodes = list()
@@ -72,5 +64,5 @@ def print_result(graph_paths):
 
 if __name__ == "__main__":
     args = parse_args()
-    graph = get_graph(args.graph_type)
+    graph = eval("create_graph_from_{}(graph_config.GRAPH_{})".format(args.graph_type, args.graph_type.upper()))
     print_result(dijkstra(graph, args.initial_node))
