@@ -5,11 +5,11 @@ Dijkstra's algorithm in Python. Example from https://en.wikipedia.org/wiki/Dijks
 
 ## Usage
 ```bash
-python dijkstra.py dict ${initial_node_name}
+python dijkstra.py -t dict ${initial_node_name}
 ```
 or
 ```bash
-python dijkstra.py matrix ${initial_node_index}
+python dijkstra.py -t matrix ${initial_node_index}
 ```
 
 ## Run tests
