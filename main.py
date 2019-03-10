@@ -1,7 +1,5 @@
 import argparse
 from graph import Graph
-from graph_dict import GRAPH as graph_dict
-from graph_matrix import GRAPH as graph_matrix
 
 
 def parse_args():
@@ -11,7 +9,9 @@ def parse_args():
     return parser.parse_args()
 
 
-def create_graph_from_dict(graph_dict):
+def create_graph_from_dict():
+    from graph_dict import GRAPH as graph_dict
+
     graph = Graph()
     for node, edges in graph_dict.items():
         for neighbour, weight in edges.items():
@@ -19,7 +19,9 @@ def create_graph_from_dict(graph_dict):
     return graph
 
 
-def create_graph_from_matrix(graph_matrix):
+def create_graph_from_matrix():
+    from graph_matrix import GRAPH as graph_matrix
+
     graph = Graph()
     for node, edges in enumerate(graph_matrix):
         for neighbour, weight in enumerate(edges):
@@ -30,9 +32,9 @@ def create_graph_from_matrix(graph_matrix):
 
 def get_graph(graph_type):
     if graph_type == "dict":
-        graph = create_graph_from_dict(graph_dict)
+        graph = create_graph_from_dict()
     elif graph_type == "matrix":
-        graph = create_graph_from_matrix(graph_matrix)
+        graph = create_graph_from_matrix()
     return graph
 
 
@@ -54,11 +56,12 @@ def dijkstra(graph, initial_node):
     visited_nodes = list()
 
     while current_node is not None:
-        for neighbour, weight in graph.get_edges(current_node).items():
-            if neighbour not in visited_nodes:
-                new_label = weight + labeled_graph[current_node]
-                if new_label < labeled_graph[neighbour]:
-                    labeled_graph[neighbour] = new_label
+        if graph.get_edges(current_node):
+            for neighbour, weight in graph.get_edges(current_node).items():
+                if neighbour not in visited_nodes:
+                    new_label = weight + labeled_graph[current_node]
+                    if new_label < labeled_graph[neighbour]:
+                        labeled_graph[neighbour] = new_label
         visited_nodes.append(current_node)
         current_node = get_current_node(labeled_graph, visited_nodes)
     return labeled_graph
