@@ -1,7 +1,14 @@
-import sys
+import argparse
 from graph import Graph
 from graph_dict import GRAPH as graph_dict
 from graph_matrix import GRAPH as graph_matrix
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Implementation of Diykstra's algorithm.")
+    parser.add_argument("-t", "--type", dest="graph_type", choices=["dict", "matrix"], default="dict", help="type of graph description.")
+    parser.add_argument("initial_node", type=str, help="initial node in graph.")
+    return parser.parse_args()
 
 
 def create_graph_from_dict(graph_dict):
@@ -27,14 +34,6 @@ def get_graph(graph_type):
     elif graph_type == "matrix":
         graph = create_graph_from_matrix(graph_matrix)
     return graph
-
-
-def get_initial_node():
-    try:
-        initial_node = sys.argv[2]
-    except IndexError:
-        initial_node = graph.get_nodes()[0]
-    return initial_node
 
 
 def get_current_node(labeled_graph, visited_nodes):
@@ -72,6 +71,6 @@ def print_result(graph_paths):
 
 
 if __name__ == "__main__":
-    graph = get_graph(sys.argv[1])
-    initial_node = get_initial_node()
-    print_result(dijkstra(graph, initial_node))
+    args = parse_args()
+    graph = get_graph(args.graph_type)
+    print_result(dijkstra(graph, args.initial_node))
