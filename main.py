@@ -1,4 +1,5 @@
 import argparse
+import graph_config
 from graph import Graph
 
 
@@ -9,9 +10,7 @@ def parse_args():
     return parser.parse_args()
 
 
-def create_graph_from_dict():
-    from graph_dict import GRAPH as graph_dict
-
+def create_graph_from_dict(graph_dict):
     graph = Graph()
     for node, edges in graph_dict.items():
         for neighbour, weight in edges.items():
@@ -19,9 +18,7 @@ def create_graph_from_dict():
     return graph
 
 
-def create_graph_from_matrix():
-    from graph_matrix import GRAPH as graph_matrix
-
+def create_graph_from_matrix(graph_matrix):
     graph = Graph()
     for node, edges in enumerate(graph_matrix):
         for neighbour, weight in enumerate(edges):
@@ -32,9 +29,9 @@ def create_graph_from_matrix():
 
 def get_graph(graph_type):
     if graph_type == "dict":
-        graph = create_graph_from_dict()
+        graph = create_graph_from_dict(graph_config.GRAPH_DICT)
     elif graph_type == "matrix":
-        graph = create_graph_from_matrix()
+        graph = create_graph_from_matrix(graph_config.GRAPH_MATRIX)
     return graph
 
 

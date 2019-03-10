@@ -4,12 +4,18 @@
 Dijkstra's algorithm in Python. Example from https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm.
 
 ## Usage
-```bash
-python dijkstra.py -t dict ${initial_node_name}
 ```
-or
-```bash
-python dijkstra.py -t matrix ${initial_node_index}
+usage: main.py [-h] [-t {dict,matrix}] initial_node
+
+Implementation of Diykstra's algorithm.
+
+positional arguments:
+  initial_node          initial node in graph.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -t {dict,matrix}, --type {dict,matrix}
+                        type of graph description.
 ```
 
 ## Run tests
@@ -17,9 +23,9 @@ python dijkstra.py -t matrix ${initial_node_index}
 python -m unittest discover -v
 ```
 
-## Graph dict
+## Graph_config
 ```Python
-GRAPH = {
+GRAPH_DICT = {
     "node1": {
         "neighbour1": int(weight1),
         "neighbour2": int(weight2),
@@ -34,11 +40,8 @@ GRAPH = {
         "neighbourN": int(weightN)
     }
 }
-```
 
-## Graph matrix
-```Python
-GRAPH = [
+GRAPH_MATRIX = [
     [0, int(weight0_0), int(weight0_1), ..., int(weight0_N)],
     ...
     [int(weightN_0), int(weightN_1), ..., 0]
