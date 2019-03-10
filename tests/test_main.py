@@ -20,7 +20,9 @@ class TestMain(unittest.TestCase):
 
     def test_create_graph_from_dict(self):
         result = self.graph_dict
-        self.assertEqual(main.create_graph_from_dict(self.graph_dict).get_dict(), result)
+        self.assertEqual(
+            main.create_graph_from_dict(self.graph_dict).get_dict(),
+            result)
 
     def test_create_graph_from_matrix(self):
         result = {
@@ -29,19 +31,26 @@ class TestMain(unittest.TestCase):
             "2": {"0": 50},
             "3": {"2": 20}
         }
-        self.assertEqual(main.create_graph_from_matrix(self.graph_matrix).get_dict(), result)
+        self.assertEqual(
+            main.create_graph_from_matrix(self.graph_matrix).get_dict(),
+            result)
 
     def test_get_current_node(self):
         visited_nodes = ["b"]
         result = "c"
-        self.assertEqual(main.get_current_node(self.labeled_graph, visited_nodes), result)
+        self.assertEqual(
+            main.get_current_node(self.labeled_graph, visited_nodes),
+            result)
 
     def test_get_current_node_none(self):
         visited_nodes = ["a", "b", "c"]
-        self.assertIsNone(main.get_current_node(self.labeled_graph, visited_nodes))
+        self.assertIsNone(
+            main.get_current_node(self.labeled_graph, visited_nodes))
 
     def test_dijkstra(self):
         graph = main.create_graph_from_dict(self.graph_dict)
         initial_node = "a"
         result = {"a": 0, "b": 30, "c": 10, "d": 70}
-        self.assertEqual(main.dijkstra(graph, initial_node), result)
+        self.assertEqual(
+            main.dijkstra(graph, initial_node),
+            result)

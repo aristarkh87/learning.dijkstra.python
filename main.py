@@ -4,9 +4,18 @@ from graph import Graph
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Implementation of Diykstra's algorithm.")
-    parser.add_argument("-t", "--type", dest="graph_type", choices=["dict", "matrix"], default="dict", help="type of graph description.")
-    parser.add_argument("initial_node", type=str, help="initial node in graph.")
+    parser = argparse.ArgumentParser(
+        description="Implementation of Diykstra's algorithm.")
+    parser.add_argument(
+        "-t", "--type",
+        dest="graph_type",
+        choices=["dict", "matrix"],
+        default="dict",
+        help="type of graph description.")
+    parser.add_argument(
+        "initial_node",
+        type=str,
+        help="initial node in graph.")
     return parser.parse_args()
 
 
@@ -64,5 +73,7 @@ def print_result(graph_paths):
 
 if __name__ == "__main__":
     args = parse_args()
-    graph = eval("create_graph_from_{}(graph_config.GRAPH_{})".format(args.graph_type, args.graph_type.upper()))
+    graph = eval("create_graph_from_{}(graph_config.GRAPH_{})".format(
+        args.graph_type,
+        args.graph_type.upper()))
     print_result(dijkstra(graph, args.initial_node))
