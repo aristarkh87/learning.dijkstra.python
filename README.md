@@ -1,5 +1,5 @@
 # Dijkstra's algorithm
-[![Build Status](https://travis-ci.org/aristarkh87/learning.dijkstra.python.svg?branch=master)](https://travis-ci.org/aristarkh87/learning.dijkstra.python)
+[![Build Status](https://travis-ci.com/aristarkh87/learning.dijkstra.python.svg?branch=master)](https://travis-ci.com/aristarkh87/learning.dijkstra.python)
 
 Dijkstra's algorithm in Python. Example from https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm.
 
@@ -7,7 +7,7 @@ Dijkstra's algorithm in Python. Example from https://en.wikipedia.org/wiki/Dijks
 ```
 usage: main.py [-h] [-t {dict,matrix}] initial_node
 
-Implementation of Diykstra's algorithm.
+Implementation of Dijkstra's algorithm.
 
 positional arguments:
   initial_node          initial node in graph.

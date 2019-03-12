@@ -26,19 +26,14 @@ class TestGraph(unittest.TestCase):
         self.graph.add_node(node)
         self.assertTrue(node in self.graph._graph)
 
-    def test_set_edge_without_weight(self):
-        node = "a"
-        neighbour = "b"
-        weight = float("inf")
-        self.graph.set_edge(node, neighbour)
-        self.assertEqual(self.graph._graph[node][neighbour], weight)
-
-    def test_set_edge_with_weight(self):
+    def test_set_edge(self):
         node = "a"
         neighbour = "b"
         weight = 100
         self.graph.set_edge(node, neighbour, weight)
         self.assertEqual(self.graph._graph[node][neighbour], weight)
+        weight = -1
+        self.assertRaises(ValueError, self.graph.set_edge, node, neighbour, weight)
 
     def test_get_nodes(self):
         result = ["a", "b", "c", "d"]
@@ -50,8 +45,6 @@ class TestGraph(unittest.TestCase):
 
     def test_get_weight(self):
         self.assertEqual(self.graph.get_weight("a", "b"), 30)
-
-    def test_get_weight_none(self):
         self.assertIsNone(self.graph.get_weight("x", "y"))
 
     def test_get_dict(self):

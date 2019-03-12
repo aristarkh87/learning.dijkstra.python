@@ -6,9 +6,11 @@ class Graph():
         if node not in self._graph:
             self._graph[node] = {}
 
-    def set_edge(self, node, neighbour, weight=float("inf")):
+    def set_edge(self, node, neighbour, weight):
         if not self._graph.get(node):
             self.add_node(node)
+        if weight <= 0:
+            raise ValueError
         self._graph[node].update({neighbour: weight})
 
     def get_nodes(self):
@@ -25,8 +27,7 @@ class Graph():
     def get_weight(self, node, neighbour):
         if self._graph.get(node):
             return self._graph.get(node).get(neighbour)
-        else:
-            return None
+        return None
 
     def get_dict(self):
         return self._graph

@@ -5,7 +5,7 @@ from graph import Graph
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Implementation of Diykstra's algorithm.")
+        description="Implementation of Dijkstra's algorithm.")
     parser.add_argument(
         "-t", "--type",
         dest="graph_type",
